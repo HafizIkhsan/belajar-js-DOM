@@ -13,6 +13,18 @@ function getHasil(pKomp, pOrang){
     if (pOrang == 'Batu') return (pKomp == 'Kertas') ? 'kalah' : 'menang';
 }
 
+let i = 0;
+let j = 0;
+function count(hasil){
+    if (hasil === 'menang') i++;
+    if(hasil === 'kalah') j++;
+    const countHuman = document.querySelector('.count-human');
+    countHuman.innerHTML = 'Menang: ' + i;
+    const countComp = document.querySelector('.count-comp');
+    countComp.innerHTML = 'Menang: ' + j;
+    return i;
+}
+
 function putar(){
     const imgComputer = document.querySelector('.img-komputer');
     const gambar = ['Gunting', 'Batu', 'Kertas'];
@@ -27,6 +39,8 @@ function putar(){
         if (i == gambar.length) i = 0;
     }, 100)
 }
+
+
 
 const pilihan = document.querySelectorAll('li img');
 pilihan.forEach(function(img){
@@ -43,6 +57,8 @@ pilihan.forEach(function(img){
     
             const info = document.querySelector('.info');
             info.innerHTML = hasil;
+
+            count(hasil);
         }, 1000);
     });
 });
